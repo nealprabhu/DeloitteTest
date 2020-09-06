@@ -3,15 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" type="text/css" href="style.css"/>  
   <link rel="stylesheet" href="scripts/semantic-ui-css/semantic.min.css">
   <link rel="stylesheet" href="scripts/semantic-ui-calendar/dist/calendar.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>SPA Demo</title>
 </head>
 <body>
-  <div class="ui container">
+  <div>
+
+    <!-- header -->
+    <div class="header">
+      <a href="#default" class="logo">Logo</a>
+      <a class="active" href="/">Home</a>
+      <a href="/exchange">Contact</a>
+      <a href="#about">About</a>
+
+      <div class="header-right">
+          <div class="search-container">
+              <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+      </div>
+    </div>
     <!-- Navigation Menu -->
-    <div class="ui four item inverted orange menu">
+    <!-- <div class="ui four item inverted orange menu">
       <div class="header item">
         <i class="money bill alternate outline icon"></i>
         Single Page App
@@ -25,7 +47,9 @@
       <a class="item" href="/historical">
         Historical Rates
       </a>
-    </div>
+    </div> -->
+
+
     <!-- Error Template -->
     <script id="error-template" type="text/x-handlebars-template">
       <div class="ui {{color}} inverted segment" style="height:250px;">
@@ -42,7 +66,110 @@
 
     <!-- Currency Rates Template -->
     <script id="rates-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Currency Rates</h1>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2">
+
+                <div class="fading-side-menu" data-spy="affix" data-offset-top="350">
+                    <h5>Filter By</h5><hr class="no-margin">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#intro">
+                                <span class="fa fa-angle-double-right text-primary"></span>Collection
+                            </a>
+                        </li>
+                        <br />
+                        <li>
+                            <a href="#getting-started">
+                                <span class="fa fa-angle-double-right text-primary"></span>Color
+                            </a>
+                        </li>
+                        <br />
+                        <li>
+                            <a href="#setting-up-our-page">
+                                <span class="fa fa-angle-double-right text-primary"></span>Category
+                            </a>
+                        </li>
+                        <br />
+                        <li>
+                            <a href="#conclusion">
+                                <span class="fa fa-angle-double-right text-primary"></span>Conclusion
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- <ul>
+              {{#each posts}}
+              <li>{{Name}}</li>
+              <li>{{Type}}</li>
+              {{/each}}
+          </ul> -->
+          <div class="col-lg-10 col-md-10 col-sm-8">
+            <div class="row mt-2">
+              {{#each posts}}
+                <!--1 card-->
+                <div  onclick="klikaj(this)" id ="{{id}}" class="col=lg-4 col-md-4 col-sm-12 order-md-1 mt-4">
+                    <div class="container block rounded-lg rounded-sm ">
+                        <!--1st row--->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <a href=""><img class="imgdesc" style="max-width: 100%;"
+                                        src="./assets/img/{{img}}.jpg" alt="placeholder image"
+                                        class="img-fluid" /></a>
+
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star checked"></span>
+                            </div>
+                        </div>
+                        <!--2nd row--->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 block2">
+                                <p>
+                                    <h4 class="mb-3"><i class="fa fa-cart-arrow-down"></i> {{Name}}</h4>
+                                    <p>{{Price}}</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                </div>
+                </div>
+
+          
+        <!-- <table class="ui celled striped selectable inverted table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each rates}}
+            <tr>
+              <td>{{@key}}</td>
+              <td>{{this}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table> -->
+
+          </div>
+
+<!-- testing -->
+                 
+                     
+   
+
+     
+
+
+      <!-- <h1 class="ui header">Currency Rates</h1>
       <hr>
       <div class="ui loading basic segment">
         <div class="ui horizontal list">
@@ -60,31 +187,71 @@
               <span>{{base}}</span>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <table class="ui celled striped selectable inverted table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each rates}}
-            <tr>
-              <td>{{@key}}</td>
-              <td>{{this}}</td>
-            </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
+    
     </script>
 
     <script id="exchange-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Exchange Rate</h1>
-      <hr>
-      <div class="ui basic loading segment">
+      <div class="container">
+        <div class="card">
+          <div class="container-fliud">
+            <div class="wrapper row">
+              <div class="preview col-md-6">
+                
+                <div class="preview-pic tab-content">
+                  <div class="tab-pane active" id="pic-1"><img src="./assets/img/{{img}}.jpg" /></div>
+                  <!-- <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+                  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+                  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+                  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
+                </div>
+                <ul class="preview-thumbnail nav nav-tabs">
+                  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="./assets/img/{{img}}.jpg" /></a></li>
+                  <li><a data-target="#pic-2" data-toggle="tab"><img src="./assets/img/{{img}}.jpg" /></a></li>
+                  <li><a data-target="#pic-3" data-toggle="tab"><img src="./assets/img/{{img}}.jpg" /></a></li>
+                  <li><a data-target="#pic-4" data-toggle="tab"><img src="./assets/img/{{img}}.jpg" /></a></li>
+                  <li><a data-target="#pic-5" data-toggle="tab"><img src="./assets/img/{{img}}.jpg" /></a></li>
+                </ul>
+                
+              </div>
+              <div class="details col-md-6">
+                <h3 class="product-title">{{Name}}</h3>
+                <div class="rating">
+                  <div class="stars">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                  <span class="review-no">41 reviews</span>
+                </div>
+                <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+                <h4 class="price">current price: <span>${{Price}}</span></h4>
+                <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+                <h5 class="sizes">sizes:
+                  <span class="size" data-toggle="tooltip" title="small">s</span>
+                  <span class="size" data-toggle="tooltip" title="medium">m</span>
+                  <span class="size" data-toggle="tooltip" title="large">l</span>
+                  <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+                </h5>
+                <h5 class="colors">colors:
+                  <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                  <span class="color green"></span>
+                  <span class="color blue"></span>
+                </h5>
+                <div class="action">
+                  <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                  <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="ui basic loading segment">
         <form class="ui form">
           <div class="three fields">
             <div class="field">
@@ -119,7 +286,7 @@
             0.00
           </h2>
         </div>
-      </div>
+      </div> -->
     </script>
 
     <script id="historical-template" type="text/x-handlebars-template">

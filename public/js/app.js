@@ -1,5 +1,10 @@
+
+
 window.addEventListener('load', () => {
   const el = $('#app');
+  var totalData;
+
+  var id;
 
   // Compile Handlebar Templates
   const errorTemplate = Handlebars.compile($('#error-template').html());
@@ -9,8 +14,9 @@ window.addEventListener('load', () => {
 
   // Instantiate api handler
   const api = axios.create({
-    baseURL: 'http://localhost:3000/api',
-    timeout: 5000,
+    baseURL : 'https://api.npoint.io/e65283a0a2e31b4a35c5',
+    // baseURL: 'http://localhost:3000/api',
+    // timeout: 5000,
   });
 
   const router = new Router({
@@ -39,16 +45,25 @@ window.addEventListener('load', () => {
     el.html(html);
     try {
       // Load Currency Rates
-      const response = await api.get('/rates');
-      const { base, date, rates } = response.data;
+      // const response = await api.get('/rates');
+   
+      const response = await api.get();
+      const {comments,furni,posts} =  response.data;
+      this.totalData = [...response.data.posts];
+      // const furniture = response.data.posts;
+      // {$colors = ['red','blue','green','purple']}
+      // const furniture =  ['red','blue','green','purple'];
+      // console.log(furniture);
       // Display Rates Table
-      html = ratesTemplate({ base, date, rates });
+      // html = ratesTemplate({ base, date, rates });
+      html = ratesTemplate({comments,furni,posts});
       el.html(html);
       $('.loading').removeClass('loading');
     } catch (error) {
       showError(error);
     }
   });
+
 
   // Perform POST request, calculate and display conversion results
   const getConversionResults = async () => {
@@ -85,14 +100,26 @@ window.addEventListener('load', () => {
 
   router.add('/exchange', async () => {
     // Display loader first
-    let html = exchangeTemplate();
-    el.html(html);
+    // let html = exchangeTemplate();
+    // el.html(html);
+debugger;
+var test = JSON.parse(window.localStorage.getItem('selected'))[0];
+// var id = parseInt(event.currentTarget.id) -1;
+
+// this.selectedData =  this.totalData.filter(function(hero) {
+//   return hero.id === id;
+// });
     try {
-      // Load Symbols
-      const response = await api.get('/symbols');
-      const { symbols } = response.data;
-      html = exchangeTemplate({ symbols });
+
+      const html = exchangeTemplate(test);
       el.html(html);
+      // Load Symbols
+
+      const response = await api.get('/symbols');
+      // const { symbols } = response.data;
+      // const { symbols } = "this is a test statement";
+      // html = exchangeTemplate({ symbols });
+      // el.html(html);
       $('.loading').removeClass('loading');
       // Specify Form Validation Rules
       $('.ui.form').form({
@@ -105,7 +132,7 @@ window.addEventListener('load', () => {
       // Specify Submit Handler
       $('.submit').click(convertRatesHandler);
     } catch (error) {
-      showError(error);
+      // showError(error);
     }
   });
 
@@ -175,3 +202,19 @@ window.addEventListener('load', () => {
     router.navigateTo(path);
   });
 });
+
+function klikaj(i)
+{
+  event.preventDefault();
+   this.id = parseInt(event.currentTarget.id);
+
+  let selectedData =  this.totalData.filter(function(hero) {
+    return hero.id === id;
+});
+window.localStorage.setItem('selected', JSON.stringify(selectedData));
+  // const target = $(event.target);
+  window.location.pathname = "/exchange";
+  // router.navigateTo(window.location.pathname);
+
+      // document.getElementById(i).style.visibility='visible';
+}
