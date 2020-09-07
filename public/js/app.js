@@ -44,18 +44,10 @@ window.addEventListener('load', () => {
     let html = ratesTemplate();
     el.html(html);
     try {
-      // Load Currency Rates
-      // const response = await api.get('/rates');
    
       const response = await api.get();
       const {comments,furni,posts} =  response.data;
       this.totalData = [...response.data.posts];
-      // const furniture = response.data.posts;
-      // {$colors = ['red','blue','green','purple']}
-      // const furniture =  ['red','blue','green','purple'];
-      // console.log(furniture);
-      // Display Rates Table
-      // html = ratesTemplate({ base, date, rates });
       html = ratesTemplate({comments,furni,posts});
       el.html(html);
       $('.loading').removeClass('loading');
@@ -99,16 +91,7 @@ window.addEventListener('load', () => {
   };
 
   router.add('/exchange', async () => {
-    // Display loader first
-    // let html = exchangeTemplate();
-    // el.html(html);
-debugger;
 var test = JSON.parse(window.localStorage.getItem('selected'))[0];
-// var id = parseInt(event.currentTarget.id) -1;
-
-// this.selectedData =  this.totalData.filter(function(hero) {
-//   return hero.id === id;
-// });
     try {
 
       const html = exchangeTemplate(test);
@@ -116,10 +99,6 @@ var test = JSON.parse(window.localStorage.getItem('selected'))[0];
       // Load Symbols
 
       const response = await api.get('/symbols');
-      // const { symbols } = response.data;
-      // const { symbols } = "this is a test statement";
-      // html = exchangeTemplate({ symbols });
-      // el.html(html);
       $('.loading').removeClass('loading');
       // Specify Form Validation Rules
       $('.ui.form').form({
@@ -212,9 +191,6 @@ function klikaj(i)
     return hero.id === id;
 });
 window.localStorage.setItem('selected', JSON.stringify(selectedData));
-  // const target = $(event.target);
   window.location.pathname = "/exchange";
   // router.navigateTo(window.location.pathname);
-
-      // document.getElementById(i).style.visibility='visible';
 }

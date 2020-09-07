@@ -32,22 +32,6 @@
             </div>
       </div>
     </div>
-    <!-- Navigation Menu -->
-    <!-- <div class="ui four item inverted orange menu">
-      <div class="header item">
-        <i class="money bill alternate outline icon"></i>
-        Single Page App
-      </div>
-      <a class="item" href="/">
-        Currency Rates
-      </a>
-      <a class="item" href="/exchange">
-        Exchange Rates
-      </a>
-      <a class="item" href="/historical">
-        Historical Rates
-      </a>
-    </div> -->
 
 
     <!-- Error Template -->
@@ -100,12 +84,6 @@
                 </div>
 
             </div>
-            <!-- <ul>
-              {{#each posts}}
-              <li>{{Name}}</li>
-              <li>{{Type}}</li>
-              {{/each}}
-          </ul> -->
           <div class="col-lg-10 col-md-10 col-sm-8">
             <div class="row mt-2">
               {{#each posts}}
@@ -141,53 +119,11 @@
                 </div>
                 </div>
 
-          
-        <!-- <table class="ui celled striped selectable inverted table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each rates}}
-            <tr>
-              <td>{{@key}}</td>
-              <td>{{this}}</td>
-            </tr>
-            {{/each}}
-          </tbody>
-        </table> -->
-
           </div>
 
 <!-- testing -->
                  
                      
-   
-
-     
-
-
-      <!-- <h1 class="ui header">Currency Rates</h1>
-      <hr>
-      <div class="ui loading basic segment">
-        <div class="ui horizontal list">
-          <div class="item">
-            <i class="calendar alternate outline icon"></i>
-            <div class="content">
-              <div class="ui sub header">Date</div>
-              <span>{{date}}</span>
-            </div>
-          </div>
-          <div class="item">
-            <i class="money bill alternate outline icon"></i>
-            <div class="content">
-              <div class="ui sub header">Base</div>
-              <span>{{base}}</span>
-            </div>
-          </div>
-        </div> -->
 
     
     </script>
@@ -201,10 +137,6 @@
                 
                 <div class="preview-pic tab-content">
                   <div class="tab-pane active" id="pic-1"><img src="./assets/img/{{img}}.jpg" /></div>
-                  <!-- <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-                  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-                  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-                  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
                 </div>
                 <ul class="preview-thumbnail nav nav-tabs">
                   <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="./assets/img/{{img}}.jpg" /></a></li>
@@ -250,43 +182,6 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="ui basic loading segment">
-        <form class="ui form">
-          <div class="three fields">
-            <div class="field">
-              <label>From</label>
-              <select class="ui dropdown" name="from" id="from">
-                <option value="">Select Currency</option>
-                {{#each symbols}}
-                <option value="{{@key}}">{{this}}</option>
-                {{/each}}
-              </select>
-            </div>
-            <div class="field">
-              <label>To</label>
-              <select class="ui dropdown" name="to" id="to">
-                <option value="">Select Currency</option>
-                {{#each symbols}}
-                <option value="{{@key}}">{{this}}</option>
-                {{/each}}
-              </select>
-            </div>
-            <div class="field">
-              <label>Amount</label>
-              <input type="number" name="amount" id="amount" placeholder="Enter amount">
-            </div>
-          </div>
-          <div class="ui primary submit button">Convert</div>
-          <div class="ui error message"></div>
-        </form>
-        <br>
-        <div id="result-segment" class="ui center aligned segment">
-          <h2 id="result" class="ui header">
-            0.00
-          </h2>
-        </div>
-      </div> -->
     </script>
 
     <script id="historical-template" type="text/x-handlebars-template">
